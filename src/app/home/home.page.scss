@@ -1,10 +1,10 @@
 #container {
-  text-align: center;
+  //text-align: center;
 
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
 }
 
@@ -24,4 +24,16 @@
 
 #container a {
   text-decoration: none;
+}
+
+.show-data {
+  text-align: center;
+  margin-top: 5%;
+}
+
+img {
+  height: 70vh;
+  width: auto;
+  margin: auto;
+  display: block;
 }

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Pokedex
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,38 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Pokedex</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-row>
+    <ion-col>
+      <strong>Gotta catch'em all!</strong>
+    </ion-col>
+  </ion-row>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full">
+      <ion-input clearInput formControlName="pokemon" placeholder="Insert a Pokemon name"></ion-input>
+    </ion-item>
+    <ion-button type="submit" color="primary" expand="block">Find</ion-button>
+  </form>
+  <ion-row class="show-data" *ngIf="loading">
+    <ion-col>
+      <ion-spinner>Carregando ..</ion-spinner>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="pokemonList !== undefined">
+    <ion-row class="show-data">
+      <ion-col>
+        <strong>{{pokemonList.name}}</strong>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let attr of pokemonList.abilities">
+        <ion-badge color="primary">{{attr.ability.name}}</ion-badge>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-img [src]="imageSrc"></ion-img>
+    </ion-row>
   </div>
 </ion-content>
